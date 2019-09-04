@@ -59,16 +59,16 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 .question-container .question {
     grid-area:question;
 }
-.question-container .answer:nth-of-type(1) {
+.question-container div:nth-child(2) {
     grid-area: a1;
 }
-.question-container .answer:nth-of-type(2) {
+.question-container div:nth-child(3) {
     grid-area: a2;
 }
-.question-container .answer:nth-of-type(3) {
+.question-container div:nth-child(4) {
     grid-area: a3;
 }
-.question-container .answer:nth-of-type(4) {
+.question-container div:nth-child(5) {
     grid-area: a4;
 }
 .question-container .question-result {
