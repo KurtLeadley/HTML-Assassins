@@ -1,0 +1,106 @@
+/* #fff
+#00ADB5
+#3A4750
+#303841 */
+body {
+    background-color: #303841;
+    color:#00ADB5;
+    margin:0;
+    padding:0;
+}
+header {
+    margin:0;
+    padding:0;
+    text-align: center;
+    background-color: #3a4750;
+}
+main {
+    margin:30px 10%;
+}
+section {
+    margin:30px 0;
+}
+h1,h2,h3 {
+    color:#fff;
+    font-weight: bold;
+}
+h1 {
+    padding:15px 0;
+    margin:0;
+}
+/*
+This is the essential, go to resource for CSS Grid.
+https://css-tricks.com/snippets/css/complete-guide-grid/
+I'm using 'grid-template-areas' to define our grid. There are other ways to do this.
+In the example below, I create a 4 row, 2 column grid. (line 50-54)
+Row 1: Question spans 2 columns
+Row 2: Answer 1, Answer 2
+Row 3: Answer 3, Answer 4
+Row 4: correct-incorrect spans 2 columns
+"grid-template-columns" is a way to define how many columns you want.
+I chose 2 columns with each at a size of 1fr (they will both take 50% space).
+Try changing the fr's to 2fr 1fr or 1fr 2fr to see how they work
+The "grid-template-areas" are populated by the grids children
+elements below by "grid-area".
+In our case, .question-container is the parent that creates the grid,
+and first level children elements are the grid areas. See lines 30-37 in the js file 
+-kl*/
+.question-container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    grid-template-areas:  
+    "question question"
+    "a1 a2"
+    "a3 a4"
+    "correct-incorrect correct-incorrect";
+}
+.question-container .question {
+    grid-area:question;
+}
+.question-container .answer:nth-of-type(1) {
+    grid-area: a1;
+}
+.question-container .answer:nth-of-type(2) {
+    grid-area: a2;
+}
+.question-container .answer:nth-of-type(3) {
+    grid-area: a3;
+}
+.question-container .answer:nth-of-type(4) {
+    grid-area: a4;
+}
+.question-container .question-result {
+    grid-area: correct-incorrect;
+}
+.question-container .question, 
+.question-container .answer,
+.question-container .question-result {
+    text-align: center;
+    background-color:#3a4750;
+    width:100%;
+}
+.question-result {
+    display:none;
+}
+
+@media (max-width: 767px) {
+    main {
+        margin:30px 2%;
+    }
+    .question-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:  
+        "question"
+        "a1"
+        "a2"
+        "a3"
+        "a4"
+        "correct-incorrect";
+    }
+    .question-container .answer {
+        justify-self: center;
+        width:80%;
+    }
+}
