@@ -6,16 +6,42 @@
         <meta name="author" content="Kurt Leadley, Karie Funk, Wendy Portillo">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>JS Quiz</title>
-        <link rel="stylesheet" href="styles/style.css">
+        <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="js/script.js"></script>
+        <script src="js/knockout-3.5.0.js"></script>
+        <script src="js/populate-questions.js"></script>
+        <script src="js/questions-model.js"></script>
+        <!-- Stylesheet - Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+            integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        <!-- bootstrap overrides -->
+        <link rel="stylesheet" href="styles/style.css" />
     </head>
     <body>
-        <header>
+        <header id='top'>
             <h1>Test Your JS Knowledge</h1>
         </header>
         <main>
-            <!--This is getting populated in our js file by our questions object -kl-->
+            <p><i>JavaScript web quiz created by the HTML Assassins</i></p>
+            <section class='questions-container'><!--loads from populate-questions.js--></section>
+            <section class='buttons'>
+                <button type="button">Restart</button>
+                <button type="button">Submit</button>
+            </section>
+            <section class='results-container'>
+                <h3>Yay! You're Done!</h3>
+                <p><i>Here are the results from your quiz:</i></p>
+                <h3 id="results-score">5 out of 10</h3>
+                <h1 id="results-score-percentage">50%</h1>
+            </section>
+            <p class='white'><i>Use the following tabs to go back and change your answer / view correct answers after submission</i></p>
+            <section class='q-tabs-container'>
+                <!--loads from populate-questions.js-->
+            </section>
         </main>
+        <footer>
+            <h3>&copy;2019 Web-330-Group-C: Kurt Leadley, Wendy Portillo, Karie Funk.</h3>
+            <a href='#top'>Back to top</a>
+        </footer>
     </body>
 </html>
