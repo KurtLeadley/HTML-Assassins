@@ -1,62 +1,43 @@
-/*
-#fff
-#000
-#214154
-#17b7e8
+/* #fff
+#00ADB5
 #3A4750
-#7e8786
-#a1c140
-#eb922b
-*/
+#303841 */
 body {
-    background-color: #214154;
-    color: #fff;
+    background-color: #303841;
+    color:#00ADB5;
     font-size: 1.2em;
     font-family: 'Varela Round', sans-serif;
     margin:0;
     padding:0;
 }
-h2,h3 {
-    color: #fff;
+h1,h2,h3 {
+    color:#fff;
     padding:15px 0;
     margin:0;
-}
-h1{
-  color: #000;
-  padding: 15px 0;
-  margin: 0;
-}
-.intro{
-    color: #fff;
 }
 .white {
     color:#fff;
 }
 .buttons {
     text-align:center;
-
 }
 .buttons button {
     background-color: #3a4750;
     color:#FFF;
-    border:1px solid #7e8786;
+    border:1px solid #FFF;
     border-radius: 4px;
 }
 .buttons button:hover {
-    background-color: #17b7e8;
-    color:#fff;
-    border:1px solid #fff;
+    background-color: #3a4750;
+    color:#00ADB5;
+    border:1px solid #00ADB5;
     border-radius: 4px;
 }
 header, footer {
     margin:0;
     padding:0;
     text-align: center;
-    background-color: #fff;
-    color: #000;
-}
-footer h3{
-    color: #000;
+    background-color: #3a4750;
 }
 main {
     margin:30px 10%;
@@ -114,67 +95,47 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 .question-container .question-result {
     grid-area: correct-incorrect;
 }
-
+.question-container .question, 
 .question-container .answer {
     text-align: center;
-    background-color:#fff;
-    color: #000;
-    border: 1px solid #000;
+    background-color:#3a4750;
+    border: 1px solid #3a4750;
     width:100%;
     border-radius: 4px;
 }
-
-.question-container .question {
-    text-align: center;
-    background-color:#3A4750;
-    border: 1px solid #7e8786;
-    width:100%;
-    border-radius: 4px;
-}
-
 .question-container .answer:hover {
     color:#fff;
-    background-color: #17b7e8;
     border: 1px solid #fff;
 }
 .question-result {
     display:none;
 }
-#results-container {
-    display:none;
+.results-container {
+    display:grid;
     grid-template-columns: repeat(5,1fr);
     column-gap: 15px;
     row-gap: 15px;
     grid-template-areas:  
     "h3 h3 ratio . ."
     "p p percent . .";
-    background-color: #fff;
-    color: #000;
 }
-#results-container h3 {
+.results-container h3 {
     grid-area: h3;
     align-self: center;
-    color: #000;
-   
 }
-#results-container p {
+.results-container p {
     grid-area: p;
     align-self: center;
-    color: #000;
-   
 }
-#results-container #results-score {
+.results-container #results-score {
     grid-area: ratio;
     justify-self: center;
     align-self: center;
-    color: #000;
-
 }
-#results-container #results-score-percentage {
+.results-container #results-score-percentage {
     grid-area: percent;
     justify-self: center;
     align-self: center;
-    color: #000;
 }
 .q-tabs-container {
     display:grid;
@@ -183,24 +144,19 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     row-gap: 15px;
 }
 .q-tab {
-    background-color: #fff;
-    color: #000;
+    background-color: #3a4750;
     width: 100%;
     text-align: center;
     border-radius: 4px;
-    border: 1px solid #000;
+    border: 1px solid #3a4750;
 }
 .q-tab:hover {
-    background-color: #17b7e8;
     color:#fff;
     border: 1px solid #fff;
 }
 .question h2, .q-tab p, .answer p {
     margin:auto 0;
     padding:10px 0;
-}
-#submit {
-    display:none;
 }
 @media (max-width: 767px) {
     main {
@@ -231,7 +187,6 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
         "p"
         "ratio"
         "percent";    
-        color: #000;
     }
     .q-tabs-container {
         display:grid;
