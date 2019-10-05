@@ -207,9 +207,11 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 }
 .q-tab-correct {
     background-color: green !important;
+    color:#fff !important;
 }
 .q-tab-incorrect {
     background-color: red !important;
+    color: #fff !important;
 }
 .question h2, .q-tab p, .answer p {
     margin:auto 0;

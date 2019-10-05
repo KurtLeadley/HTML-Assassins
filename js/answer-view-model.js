@@ -114,10 +114,10 @@ function AnswerViewModel() {
     self.restart = function() {
         for (var i=0; i <=10 ; i++) {
             $('#submit').hide();
-            $('#answer-one-q'+i).removeClass('q-selected-answer');
-            $('#answer-two-q'+i).removeClass('q-selected-answer');
-            $('#answer-three-q'+i).removeClass('q-selected-answer');
-            $('#answer-four-q'+i).removeClass('q-selected-answer');
+            $('#answer-one-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
+            $('#answer-two-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
+            $('#answer-three-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
+            $('#answer-four-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
         }
         for (var i=1; i<=10; i++) {
             $('#q-tab-'+i).removeClass('q-tab-answered q-tab-correct q-tab-incorrect');
@@ -125,11 +125,14 @@ function AnswerViewModel() {
         for (var i=0; i <questionList.length; i++) {
             questionList[i].IsCorrect='';
             questionList[i].UserAnswer='';
-            console.log(questionList[i]);
         }
+        $('#results-container').hide();
+        $('#results-score').text('');
+        $('#results-score-percentage').text('');
+        $('#results-rank').text('');
     }
     self.submit = function() {
-        var correct = 0;
+        var numCorrect = 0;
         for (var i=0; i <questionList.length; i++) {
             id = i+1;
             var answer = questionList[i].IsCorrect;
@@ -164,12 +167,8 @@ function AnswerViewModel() {
                     userAnswerId = 'four';
                     break;
             }
-            console.log(answer);
-            console.log(answerId);
-            console.log(questionNum);
-            console.log(userAnswer);
             if (answer === true) {
-                correct++;
+                numCorrect++;
                 $('#q-tab-'+id).addClass('q-tab-correct');
                 $('#answer-'+answerId+'-q'+questionNum).addClass('q-tab-correct');
             }
@@ -178,6 +177,21 @@ function AnswerViewModel() {
                 $('#answer-'+userAnswerId+'-q'+questionNum).addClass('q-tab-incorrect');
                 $('#answer-'+answerId+'-q'+questionNum).addClass('q-tab-correct');
             }
+            var percentage = (numCorrect / questionList.length) * 100;
+            if (percentage >= 80) {
+                var rank = "Expert";
+            }
+            if ((percentage >= 60) && (percentage < 80)) {
+                var rank = "Novice";
+            }
+            if (percentage < 60) {
+                var rank = "Beginner";
+            }
+            $('#submit').hide();
+            $('#results-container').show();
+            $('#results-score').text(numCorrect+" out of " + questionList.length);
+            $('#results-score-percentage').text(percentage+"%");
+            $('#results-rank').text("Your Rank is: " +rank);
         }
     } 
 }
