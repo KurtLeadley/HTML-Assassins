@@ -156,31 +156,30 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     "p p percent . .";
     background-color: #fff;
     color: #000;
+    border: 1px solid #000;
 }
 #results-container h3 {
     grid-area: h3;
     align-self: center;
+    padding:5px 10px; 
     color: #000;
-   
+    font-size: 20px;
 }
 #results-container p {
     grid-area: p;
     align-self: center;
+    padding:5px 10px;
     color: #000;
-   
 }
 #results-container #results-score {
     grid-area: ratio;
     justify-self: center;
     align-self: center;
-    color: #000;
-
 }
 #results-container #results-score-percentage {
     grid-area: percent;
     justify-self: center;
     align-self: center;
-    color: #000;
 }
 .q-tabs-container {
     display:grid;

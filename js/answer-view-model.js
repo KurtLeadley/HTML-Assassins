@@ -189,8 +189,8 @@ function AnswerViewModel() {
             }
             $('#submit').hide();
             $('#results-container').show();
-            $('#results-score').text(numCorrect+" out of " + questionList.length);
-            $('#results-score-percentage').text(percentage+"%");
+            $('#results-score').text(numCorrect+" out of " + questionList.length+ " correct");
+            $('#results-score-percentage').text("Score: "+ percentage+"%");
             $('#results-rank').text("Your Rank is: " +rank);
         }
     } 
