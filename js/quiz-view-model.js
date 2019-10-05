@@ -1,69 +1,13 @@
-function Question(questionNum,question,a1,a2,a3,a4,correctA,userA,isCorrect,display) {
-    this.QuestionNum = questionNum;
-    this.QuestionText = question;
-    this.Answer1 = a1;
-    this.Answer2 = a2;
-    this.Answer3 = a3;
-    this.Answer4 = a4;
-    this.CorrectAnswer = correctA;
-    this.UserAnswer = userA;
-    this.IsCorrect = isCorrect
-    this.Display = display;
-}
-var questionList = [
-    new Question(
-        1,
-        "What does js stand for?",
-        "jQuery Script",
-        "Java Serialized",
-        "JSONScript",
-        "JavaScript",
-        "AnswerFour",
-        "",
-        "",
-        true
-    ),
-    new Question(
-        2,
-        "How do you push a value to an array?",
-        "array.push(value);",
-        "push[array,value];",
-        "array_push(array,value);",
-        "array.push[value];",
-        "AnswerOne",
-        "",
-        "",
-        true 
-    )
-];
-function AnswerViewModel() {
-    var self = this;
-    self.QuestionNum = ko.observable("");
-    self.QuestionText = ko.observable("");
-    self.Answer1 = ko.observable("");
-    self.Answer2 = ko.observable("");
-    self.Answer3 = ko.observable("");
-    self.Answer4 = ko.observable("");
-    self.CorrectAnswer = ko.observable("");
-    self.UserAnswer = ko.observable("");
-    self.IsCorrect = ko.observable("");
-    self.Display = ko.observable("");
+//
+// ViewModel
+function QuizViewModel() {
 
-    var Question = {
-        QuestionNum : self.QuestionNum,
-        QuestionText : self.Question,
-        Answer1 : self.Answer1,
-        Answer2 : self.Answer2,
-        Answer3 : self.Answer3,
-        Answer4: self.Answer4,
-        CorrectAnswer : self.CorrectAnswer,
-        UserAnswer : self.UserAnswer,
-        IsCorrect : self.IsCorrect,
-        Display : self.Display
-    };
+    var self = this;
+
     self.Question = ko.observable();
     self.Questions = ko.observableArray(questionList);
-
+    //
+    // answer selection function
     self.selectAnswer = function(Question, event) {       
         $('#answer-one-q'+Question.QuestionNum).removeClass('q-selected-answer');
         $('#answer-two-q'+Question.QuestionNum).removeClass('q-selected-answer');
@@ -71,23 +15,7 @@ function AnswerViewModel() {
         $('#answer-four-q'+Question.QuestionNum).removeClass('q-selected-answer');
         Question.UserAnswer = event.target.id;
         var answerId = Question.UserAnswer;
-        var answer = Question.UserAnswer;
-        answer = answer.split('-q');
-        answer = answer[0];
-        switch(answer) {
-            case "answer-one" :
-                answer = "AnswerOne";
-                break;
-            case "answer-two" :
-                answer = "AnswerTwo";
-                break;
-            case "answer-three" :
-                answer = "AnswerThree";
-                break;
-            case "answer-four" :
-                answer = "AnswerFour";
-                break;
-        } 
+        var answer = answerId.split('-q')[0];
         Question.UserAnswer = answer;
         var qNum = Question.QuestionNum;
         console.log(Question);
@@ -104,13 +32,15 @@ function AnswerViewModel() {
 
         for (var i=0; i <questionList.length; i++) {
             var answered = questionList[i].UserAnswer;
-            if((!answered) || (answered === '')) {
+            if(!answered) {
                 $('#submit').hide();
                 break;
             }
             $('#submit').show();
         }
     }
+    //
+    // restart function 
     self.restart = function() {
         for (var i=0; i <=10 ; i++) {
             $('#submit').hide();
@@ -131,6 +61,8 @@ function AnswerViewModel() {
         $('#results-score-percentage').text('');
         $('#results-rank').text('');
     }
+    //
+    // submit function
     self.submit = function() {
         var numCorrect = 0;
         for (var i=0; i <questionList.length; i++) {
@@ -139,43 +71,15 @@ function AnswerViewModel() {
             var questionNum = questionList[i].QuestionNum;
             var correctAnswer = questionList[i].CorrectAnswer;
             var userAnswer = questionList[i].UserAnswer;
-            switch (correctAnswer) {
-                case "AnswerOne" :
-                    answerId = 'one';
-                    break;
-                case "AnswerTwo" :
-                    answerId = 'two';
-                    break;
-                case "AnswerThree" :
-                    answerId = 'three';
-                    break;
-                case "AnswerFour" :
-                    answerId = 'four';
-                    break;
-            }
-            switch (userAnswer) {
-                case "AnswerOne" :
-                    userAnswerId = 'one';
-                    break;
-                case "AnswerTwo" :
-                    userAnswerId = 'two';
-                    break;
-                case "AnswerThree" :
-                    userAnswerId = 'three';
-                    break;
-                case "AnswerFour" :
-                    userAnswerId = 'four';
-                    break;
-            }
             if (answer === true) {
                 numCorrect++;
                 $('#q-tab-'+id).addClass('q-tab-correct');
-                $('#answer-'+answerId+'-q'+questionNum).addClass('q-tab-correct');
+                $('#'+correctAnswer+'-q'+questionNum).addClass('q-tab-correct');
             }
             if (answer === false) {
                 $('#q-tab-'+id).addClass('q-tab-incorrect');
-                $('#answer-'+userAnswerId+'-q'+questionNum).addClass('q-tab-incorrect');
-                $('#answer-'+answerId+'-q'+questionNum).addClass('q-tab-correct');
+                $('#'+userAnswer+'-q'+questionNum).addClass('q-tab-incorrect');
+                $('#'+correctAnswer+'-q'+questionNum).addClass('q-tab-correct');
             }
             var percentage = (numCorrect / questionList.length) * 100;
             if (percentage >= 80) {
@@ -195,4 +99,4 @@ function AnswerViewModel() {
         }
     } 
 }
-ko.applyBindings(new AnswerViewModel());
+ko.applyBindings(new QuizViewModel());
