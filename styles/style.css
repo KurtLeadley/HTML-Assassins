@@ -137,8 +137,14 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     background-color: #17b7e8;
     border: 1px solid #fff;
 }
+.q-selected-answer {
+    background-color: #17b7e8 !important;
+}
 .question-result {
     display:none;
+}
+.false {
+    display: none;
 }
 #results-container {
     display:none;
@@ -194,6 +200,16 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     background-color: #17b7e8;
     color:#fff;
     border: 1px solid #fff;
+}
+.q-tab-answered {
+    background-color: #3A4750;
+    color:#fff;
+}
+.q-tab-correct {
+    background-color: green;
+}
+.q-tab-incorrect {
+    background-color: red;
 }
 .question h2, .q-tab p, .answer p {
     margin:auto 0;
