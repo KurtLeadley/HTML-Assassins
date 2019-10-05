@@ -133,15 +133,51 @@ function AnswerViewModel() {
         for (var i=0; i <questionList.length; i++) {
             id = i+1;
             var answer = questionList[i].IsCorrect;
+            var questionNum = questionList[i].QuestionNum;
+            var correctAnswer = questionList[i].CorrectAnswer;
+            var userAnswer = questionList[i].UserAnswer;
+            switch (correctAnswer) {
+                case "AnswerOne" :
+                    answerId = 'one';
+                    break;
+                case "AnswerTwo" :
+                    answerId = 'two';
+                    break;
+                case "AnswerThree" :
+                    answerId = 'three';
+                    break;
+                case "AnswerFour" :
+                    answerId = 'four';
+                    break;
+            }
+            switch (userAnswer) {
+                case "AnswerOne" :
+                    userAnswerId = 'one';
+                    break;
+                case "AnswerTwo" :
+                    userAnswerId = 'two';
+                    break;
+                case "AnswerThree" :
+                    userAnswerId = 'three';
+                    break;
+                case "AnswerFour" :
+                    userAnswerId = 'four';
+                    break;
+            }
             console.log(answer);
+            console.log(answerId);
+            console.log(questionNum);
+            console.log(userAnswer);
             if (answer === true) {
                 correct++;
                 $('#q-tab-'+id).addClass('q-tab-correct');
+                $('#answer-'+answerId+'-q'+questionNum).addClass('q-tab-correct');
             }
             if (answer === false) {
                 $('#q-tab-'+id).addClass('q-tab-incorrect');
+                $('#answer-'+userAnswerId+'-q'+questionNum).addClass('q-tab-incorrect');
+                $('#answer-'+answerId+'-q'+questionNum).addClass('q-tab-correct');
             }
-            console.log(correct);
         }
     } 
 }
