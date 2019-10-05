@@ -67,16 +67,16 @@ function QuizViewModel() {
         var numCorrect = 0;
         for (var i=0; i <questionList.length; i++) {
             id = i+1;
-            var answer = questionList[i].IsCorrect;
+            var isCorrect = questionList[i].IsCorrect;
             var questionNum = questionList[i].QuestionNum;
             var correctAnswer = questionList[i].CorrectAnswer;
             var userAnswer = questionList[i].UserAnswer;
-            if (answer === true) {
+            if (isCorrect === true) {
                 numCorrect++;
                 $('#q-tab-'+id).addClass('q-tab-correct');
                 $('#'+correctAnswer+'-q'+questionNum).addClass('q-tab-correct');
             }
-            if (answer === false) {
+            if (isCorrect === false) {
                 $('#q-tab-'+id).addClass('q-tab-incorrect');
                 $('#'+userAnswer+'-q'+questionNum).addClass('q-tab-incorrect');
                 $('#'+correctAnswer+'-q'+questionNum).addClass('q-tab-correct');
