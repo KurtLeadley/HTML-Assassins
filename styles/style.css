@@ -68,7 +68,7 @@ main {
     margin:30px 10%;
 }
 section {
-    margin:30px 0;
+    margin:15px 0;
 }
 footer h4 {
     margin:auto 0;
@@ -153,6 +153,9 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 .question-result {
     display:none;
 }
+.question, .answer {
+    padding:5px 0;
+}
 .false {
     display: none;
 }
@@ -160,7 +163,7 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     display:none;
     grid-template-columns: repeat(6,1fr);
     column-gap: 5px;
-    row-gap: 0;
+    row-gap: 5px;
     grid-template-areas:  
     "t1 t1 t1 rank rank rank"
     "t2 t2 t2 ratio ratio ratio"
@@ -168,25 +171,28 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     background-color: #fff;
     color: #000;
     border: 1px solid #000;
+    border-radius: 4px;
+    margin:5px 0px;
 }
 #results-text-one {
     grid-area: t1;
     align-self: center;
     justify-self: left;
-    padding:5px 10px; 
+    padding:0 10px; 
     color: #000;
     font-size: 20px;
 }
 #results-text-two {
     grid-area: t2;
     align-self: center;
-    padding:5px 10px;
+    padding:0 10px;
     color: #000;
 }
 #results-container #results-score {
     grid-area: ratio;
     justify-self: left;
     align-self: center;
+    padding:0 10px;
 }
 #results-container #results-score-percentage {
     grid-area: percent;
@@ -194,11 +200,13 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     align-self: center;
     color:#000;
     margin: 0;
+    padding:0 10px;
 }
 #results-container #results-rank {
     grid-area: rank;
     justify-self: left;
     align-self: center;
+    padding:0 10px;
 }
 .q-tabs-container {
     display:grid;

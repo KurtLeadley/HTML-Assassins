@@ -102,6 +102,16 @@ function QuizViewModel() {
             $('#results-score').text(numCorrect+" out of " + questionList.length+ " correct");
             $('#results-score-percentage').text("Score: "+ percentage+"%");
             $('#results-rank').text("Your Rank is: " +rank);
+            // for some reason, looping to hide here was causing issues
+            $('#q1').hide();
+            $('#q2').hide();
+            $('#q3').hide();
+            $('#q4').hide();
+            $('#q5').hide();
+            $('#q6').hide();
+            $('#q7').hide();
+            $('#q8').hide();
+            $('#q9').hide();
             $('#q10').hide();
         }
     }
