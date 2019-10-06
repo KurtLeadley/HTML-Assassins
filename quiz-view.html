@@ -22,11 +22,11 @@
         <main>
             <p id="intro"><i>JavaScript web quiz created by the HTML Assassins</i></p>
             <section id='results-container'>
-                <h3>Yay! You're Done!</h3>
-                <p><i>Here are the results from your quiz:</i></p>
-                <h3 id="results-score"></h3>
+                <p id="results-text-one">Yay! You're Done!</p>
+                <p id="results-text-two"><i>Here are the results from your quiz:</i></p>
+                <p id="results-score"></p>
                 <h3 id="results-score-percentage"></h3>
-                <h3 id="results-rank"></h3>
+                <p id="results-rank"></p>
             </section>
             <!-- this section is observed and manipulated by the QuizViewModel -->
             <section data-bind="foreach: Questions" class='questions-container'>

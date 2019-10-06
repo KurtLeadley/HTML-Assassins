@@ -16,6 +16,9 @@ body {
     margin:0;
     padding:0;
 }
+p {
+    margin:0;
+}
 h2,h3 {
     color: #fff;
     padding:15px 0;
@@ -155,37 +158,46 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 }
 #results-container {
     display:none;
-    grid-template-columns: repeat(5,1fr);
-    column-gap: 15px;
-    row-gap: 15px;
+    grid-template-columns: repeat(6,1fr);
+    column-gap: 5px;
+    row-gap: 0;
     grid-template-areas:  
-    "h3 h3 ratio . ."
-    "p p percent . .";
+    "t1 t1 t1 rank rank rank"
+    "t2 t2 t2 ratio ratio ratio"
+    ". . percent percent . .";
     background-color: #fff;
     color: #000;
     border: 1px solid #000;
 }
-#results-container h3 {
-    grid-area: h3;
+#results-text-one {
+    grid-area: t1;
     align-self: center;
+    justify-self: left;
     padding:5px 10px; 
     color: #000;
     font-size: 20px;
 }
-#results-container p {
-    grid-area: p;
+#results-text-two {
+    grid-area: t2;
     align-self: center;
     padding:5px 10px;
     color: #000;
 }
 #results-container #results-score {
     grid-area: ratio;
-    justify-self: center;
+    justify-self: left;
     align-self: center;
 }
 #results-container #results-score-percentage {
     grid-area: percent;
     justify-self: center;
+    align-self: center;
+    color:#000;
+    margin: 0;
+}
+#results-container #results-rank {
+    grid-area: rank;
+    justify-self: left;
     align-self: center;
 }
 .q-tabs-container {

@@ -98,7 +98,7 @@ function QuizViewModel() {
                 var rank = "Beginner";
             }
             $('#submit').hide();
-            $('#results-container').show();
+            $('#results-container').show().css("display","grid");
             $('#results-score').text(numCorrect+" out of " + questionList.length+ " correct");
             $('#results-score-percentage').text("Score: "+ percentage+"%");
             $('#results-rank').text("Your Rank is: " +rank);
