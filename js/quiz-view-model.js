@@ -9,30 +9,35 @@ function QuizViewModel() {
     //
     // answer selection function
     self.selectAnswer = function(Question, event) {       
-        $('#answer-one-q'+Question.QuestionNum).removeClass('q-selected-answer');
-        $('#answer-two-q'+Question.QuestionNum).removeClass('q-selected-answer');
-        $('#answer-three-q'+Question.QuestionNum).removeClass('q-selected-answer');
-        $('#answer-four-q'+Question.QuestionNum).removeClass('q-selected-answer');
-        Question.UserAnswer = event.target.id;
-        var answerId = Question.UserAnswer;
+        $('#answer-one-q'+Question.questionNum).removeClass('q-selected-answer');
+        $('#answer-two-q'+Question.questionNum).removeClass('q-selected-answer');
+        $('#answer-three-q'+Question.questionNum).removeClass('q-selected-answer');
+        $('#answer-four-q'+Question.questionNum).removeClass('q-selected-answer');
+        Question.userAnswer = event.target.id;
+        var answerId = Question.userAnswer;
         var answer = answerId.split('-q')[0];
-        Question.UserAnswer = answer;
-        var qNum = Question.QuestionNum;
+        Question.userAnswer = answer;
+        var qNum = Question.questionNum;
+        $("#q-tab-"+qNum).removeClass('q-tab-active');
         console.log(Question);
-        if (Question.UserAnswer === Question.CorrectAnswer) {
-            Question.IsCorrect = true;
+        if (Question.userAnswer === Question.correctAnswer) {
+            Question.isCorrect = true;
             console.log('correct');
         } else {
-            Question.IsCorrect = false;
+            Question.isCorrect = false;
             console.log('incorrect');
         }
-        Question.Display = false;
         $('#q-tab-'+qNum).addClass('q-tab-answered');
         $('#'+answerId).addClass('q-selected-answer');
-
+        
         for (var i=0; i <questionList.length; i++) {
-            var answered = questionList[i].UserAnswer;
+            var answered = questionList[i].userAnswer;
+            var divNum = i +1;
+            $("#q-tab-"+divNum).removeClass('q-tab-active');
             if(!answered) {
+                $('#q'+qNum).hide();
+                $('#q'+divNum).show().css("display","grid");
+                $("#q-tab-"+divNum).addClass('q-tab-active');
                 $('#submit').hide();
                 break;
             }
@@ -42,24 +47,25 @@ function QuizViewModel() {
     //
     // restart function 
     self.restart = function() {
-        for (var i=0; i <=10 ; i++) {
-            $('#submit').hide();
+        for (var i=1; i <=10 ; i++) {
             $('#answer-one-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
             $('#answer-two-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
             $('#answer-three-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
             $('#answer-four-q'+i).removeClass('q-selected-answer q-tab-correct q-tab-incorrect');
-        }
-        for (var i=1; i<=10; i++) {
-            $('#q-tab-'+i).removeClass('q-tab-answered q-tab-correct q-tab-incorrect');
+            $('#q-tab-'+i).removeClass('q-tab-answered q-tab-correct q-tab-incorrect q-tab-active');
+            $('#q'+i).hide();
         }
         for (var i=0; i <questionList.length; i++) {
-            questionList[i].IsCorrect='';
-            questionList[i].UserAnswer='';
+            questionList[i].isCorrect='';
+            questionList[i].userAnswer='';
         }
+        $('#submit').hide();
         $('#results-container').hide();
         $('#results-score').text('');
         $('#results-score-percentage').text('');
         $('#results-rank').text('');
+        $('#q1').show().css("display","grid");
+        $("#q-tab-1").addClass('q-tab-active');
     }
     //
     // submit function
@@ -67,10 +73,10 @@ function QuizViewModel() {
         var numCorrect = 0;
         for (var i=0; i <questionList.length; i++) {
             id = i+1;
-            var isCorrect = questionList[i].IsCorrect;
-            var questionNum = questionList[i].QuestionNum;
-            var correctAnswer = questionList[i].CorrectAnswer;
-            var userAnswer = questionList[i].UserAnswer;
+            var isCorrect = questionList[i].isCorrect;
+            var questionNum = questionList[i].questionNum;
+            var correctAnswer = questionList[i].correctAnswer;
+            var userAnswer = questionList[i].userAnswer;
             if (isCorrect === true) {
                 numCorrect++;
                 $('#q-tab-'+id).addClass('q-tab-correct');
@@ -96,7 +102,8 @@ function QuizViewModel() {
             $('#results-score').text(numCorrect+" out of " + questionList.length+ " correct");
             $('#results-score-percentage').text("Score: "+ percentage+"%");
             $('#results-rank').text("Your Rank is: " +rank);
+            $('#q10').hide();
         }
-    } 
+    }
 }
 ko.applyBindings(new QuizViewModel());

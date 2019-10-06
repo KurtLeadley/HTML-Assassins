@@ -21,22 +21,6 @@
         </header>
         <main>
             <p id="intro"><i>JavaScript web quiz created by the HTML Assassins</i></p>
-
-            <section data-bind="foreach: Questions" class='questions-container'>
-                <section data-bind="attr: {'id': 'q'+QuestionNum, 'class':'question-container'+' '+ Display}">
-                    <div data-bind="attr: {'id':'question-q'+QuestionNum, 'class':'question'} , text:QuestionText"></div>
-                    <div data-bind="attr: {'id':'answer-one-q'+QuestionNum, 'class':'answer'} , text:Answer1, click: $root.selectAnswer"></div>
-                    <div data-bind="attr: {'id':'answer-two-q'+QuestionNum, 'class':'answer'} , text:Answer2, click: $root.selectAnswer"></div>
-                    <div data-bind="attr: {'id':'answer-three-q'+QuestionNum, 'class':'answer'} , text:Answer3, click: $root.selectAnswer"></div>                    
-                    <div data-bind="attr: {'id':'answer-four-q'+QuestionNum, 'class':'answer'} , text:Answer4, click: $root.selectAnswer"></div>
-                </section>
-            </section>
-
-            <section class='buttons'>
-                <button data-bind="click: $root.restart" id = 'restart' type="button">Restart</button>
-                <button data-bind="click: $root.submit" id ='submit' type="button">Submit</button>
-            </section>
-       
             <section id='results-container'>
                 <h3>Yay! You're Done!</h3>
                 <p><i>Here are the results from your quiz:</i></p>
@@ -44,24 +28,32 @@
                 <h3 id="results-score-percentage"></h3>
                 <h3 id="results-rank"></h3>
             </section>
-  
-            <p class='white'><i>Use the following tabs to go back and change your answer / view correct answers after submission</i></p>
+            <!-- this section is observed and manipulated by the QuizViewModel -->
+            <section data-bind="foreach: Questions" class='questions-container'>
+                <section data-bind="attr: {'id': 'q'+questionNum, 'class':'question-container'}">
+                    <div data-bind="attr: {'id':'question-q'+questionNum, 'class':'question'} , text:question"></div>
+                    <div data-bind="attr: {'id':'answer-one-q'+questionNum, 'class':'answer'} , text:a1, click: $root.selectAnswer"></div>
+                    <div data-bind="attr: {'id':'answer-two-q'+questionNum, 'class':'answer'} , text:a2, click: $root.selectAnswer"></div>
+                    <div data-bind="attr: {'id':'answer-three-q'+questionNum, 'class':'answer'} , text:a3, click: $root.selectAnswer"></div>                    
+                    <div data-bind="attr: {'id':'answer-four-q'+questionNum, 'class':'answer'} , text:a4, click: $root.selectAnswer"></div>
+                </section>
+            </section>       
+            <section class='buttons'>
+                <button data-bind="click: $root.restart" id = 'restart' type="button">Restart</button>
+                <button data-bind="click: $root.submit" id ='submit' type="button">Submit</button>
+            </section>
+            <p class='info'><i>Use the following tabs to go back and change your answer / view correct answers after submission</i></p>
             <section class='q-tabs-container'>
-                <!--loads from populate-questions.js-->       
+                <!--loads from q-tabs.js-->       
             </section>
         </main>
         <footer>
             <h3>&copy;2019 Web-330-Group-C: Kurt Leadley, Wendy Portillo, Karie Funk.</h3>
             <a href='#top'>Back to top</a>
         </footer>
+        <!-- load q-tab handler, data model and view model -->
+        <script src="js/q-tab.js"></script>
         <script src="js/quiz-model.js"></script>
         <script src="js/quiz-view-model.js"></script>
-        <script>
-            for (var i=0; i < 10; i++) {
-                var rId = i + 1;
-                var resultsHtml = `<div id='q-tab-${rId}' class='q-tab'><p>Question ${rId}</p></div>`;
-                $('.q-tabs-container').append(resultsHtml);
-            }
-        </script>
     </body>
 </html>

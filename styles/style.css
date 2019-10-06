@@ -29,8 +29,10 @@ h1{
 .intro{
     color: #fff;
 }
-.white {
+.info {
     color:#fff;
+    font-size:16px;
+    margin:0;
 }
 .buttons {
     text-align:center;
@@ -47,6 +49,7 @@ h1{
     color:#fff;
     border:1px solid #fff;
     border-radius: 4px;
+    cursor: pointer;
 }
 header, footer {
     margin:0;
@@ -101,15 +104,19 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 }
 .question-container div:nth-child(2) {
     grid-area: a1;
+    cursor: pointer;
 }
 .question-container div:nth-child(3) {
     grid-area: a2;
+    cursor: pointer;
 }
 .question-container div:nth-child(4) {
     grid-area: a3;
+    cursor: pointer;
 }
 .question-container div:nth-child(5) {
     grid-area: a4;
+    cursor: pointer;
 }
 .question-container .question-result {
     grid-area: correct-incorrect;
@@ -199,6 +206,7 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
     background-color: #17b7e8;
     color:#fff;
     border: 1px solid #fff;
+    cursor: pointer;
 }
 .q-tab-answered {
     background-color: #3A4750;
@@ -211,6 +219,10 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 .q-tab-incorrect {
     background-color: red !important;
     color: #fff !important;
+}
+.q-tab-active {
+   background-color: #17b7e8; 
+   color:#fff;
 }
 .question h2, .q-tab p, .answer p {
     margin:auto 0;
