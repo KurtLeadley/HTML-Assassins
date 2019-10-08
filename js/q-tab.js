@@ -1,7 +1,13 @@
-// Author: Kurt Leadley
-// script to handle the q-tabs classes, question navigation and question display
-// some question display logic is also present in the QuizViewModel
-$( document ).ready(function() {
+/*
+==============================================
+; Title:  HTML-Assassins Quiz
+; Authors: Kurt Leadley, Karie Funk, Wendy Portillo 
+; Date:   October 7th, 2019
+; Description: script to handle the q-tabs classes, question navigation and question display
+; some question display logic is also present in the QuizViewModel
+==============================================
+*/
+$(document).ready(function() {
     // create a q-tab for every question in our questionList
     for (i=1; i <= questionList.length; i++) {
         // hide all the questions on load

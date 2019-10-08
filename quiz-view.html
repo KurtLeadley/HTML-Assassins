@@ -1,3 +1,11 @@
+<!--
+==============================================
+; Title:  HTML-Assassins Quiz
+; Authors: Kurt Leadley, Karie Funk, Wendy Portillo 
+; Date:   October 7th, 2019
+; Description: Javascript Quiz View
+==============================================
+-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,6 +37,7 @@
                 <p id="results-rank"></p>
             </section>
             <!-- this section is observed and manipulated by the QuizViewModel -->
+            <!-- https://knockoutjs.com/documentation/foreach-binding.html -->
             <section data-bind="foreach: Questions" class='questions-container'>
                 <section data-bind="attr: {'id': 'q'+questionNum, 'class':'question-container'}">
                     <div data-bind="attr: {'id':'question-q'+questionNum, 'class':'question'} , text:question"></div>
@@ -39,12 +48,13 @@
                 </section>
             </section>       
             <section class='buttons'>
+                <!-- https://knockoutjs.com/documentation/click-binding.html -->
                 <button data-bind="click: $root.restart" id = 'restart' type="button">Restart</button>
                 <button data-bind="click: $root.submit" id ='submit' type="button">Submit</button>
             </section>
             <p class='info'><i>Use the following tabs to go back and change your answer / view correct answers after submission</i></p>
             <section class='q-tabs-container'>
-                <!--loads from q-tabs.js-->       
+                <!--loads from q-tab.js-->       
             </section>
         </main>
         <footer>

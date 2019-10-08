@@ -1,4 +1,12 @@
 /*
+==============================================
+; Title:  HTML-Assassins Quiz
+; Authors: Kurt Leadley, Karie Funk, Wendy Portillo 
+; Date:   October 7th, 2019
+; Description: CSS bootstrap overrides
+==============================================
+*/
+/* Color Scheme for our page 
 #fff
 #000
 #214154
@@ -251,6 +259,7 @@ and first level children elements are the grid areas. See lines 30-37 in the js 
 #submit {
     display:none;
 }
+/* Mobile media queries */
 @media (max-width: 767px) {
     main {
         margin:30px 2%;
